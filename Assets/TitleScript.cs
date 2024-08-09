@@ -23,7 +23,7 @@ public class TitleScript : MonoBehaviour
         }
         else
         {
-            hitKey.SetActive(true);
+            hitKey.SetActive(true);Å@
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
