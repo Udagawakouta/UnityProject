@@ -38,6 +38,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (!GoalScript.isGameClear)
         {
+
             // ジャンプアニメーション切り替え
             if (isBlock)
             {
@@ -57,7 +58,7 @@ public class PlayerScript : MonoBehaviour
             float stick = Input.GetAxis("Horizontal");
             if (stick > 0 || Input.GetKey(KeyCode.RightArrow))
             {
-                v.x = moveSpeed.x;
+                    v.x = moveSpeed.x;
                 // 右向き
                 if (!animator.GetBool("Jump"))
                 {
@@ -66,8 +67,8 @@ public class PlayerScript : MonoBehaviour
                 }
             }
             else if (stick < 0 || Input.GetKey(KeyCode.LeftArrow))
-            {
-                v.x = -moveSpeed.x;
+            {          
+                    v.x = -moveSpeed.x;
                 // 左向き
                 if (!animator.GetBool("Jump"))
                 {
@@ -84,9 +85,9 @@ public class PlayerScript : MonoBehaviour
         }
         else
         {
-            Vector3 v = rb.velocity;
-            v.x = 0;
-            rb.velocity = v;
+            //Vector3 v = rb.velocity;
+            //v.x = 0;
+            //rb.velocity = v;
         }
     }
 }
