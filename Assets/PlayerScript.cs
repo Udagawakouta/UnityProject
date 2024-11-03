@@ -58,23 +58,13 @@ public class PlayerScript : MonoBehaviour
             float stick = Input.GetAxis("Horizontal");
             if (stick > 0 || Input.GetKey(KeyCode.RightArrow))
             {
-                    v.x = moveSpeed.x;
-                // ‰EŒü‚«
-                if (!animator.GetBool("Jump"))
-                {
-                    Quaternion targetRotation = Quaternion.Euler(0, 90, 0);
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 500 * Time.deltaTime);        
-                }
+                v.x = moveSpeed.x;
+                RotatePlayer(90);
             }
             else if (stick < 0 || Input.GetKey(KeyCode.LeftArrow))
-            {          
-                    v.x = -moveSpeed.x;
-                // ¶Œü‚«
-                if (!animator.GetBool("Jump"))
-                {
-                    Quaternion targetRotation = Quaternion.Euler(0, -90, 0);
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 500 * Time.deltaTime);
-                }
+            {
+                v.x = -moveSpeed.x;
+                RotatePlayer(-90);
             }
             else
             {
@@ -85,9 +75,17 @@ public class PlayerScript : MonoBehaviour
         }
         else
         {
-            //Vector3 v = rb.velocity;
-            //v.x = 0;
-            //rb.velocity = v;
+            rb.velocity = Vector3.zero;
         }
     }
+
+    private void RotatePlayer(float angle)
+    {
+        Quaternion targetRotation = Quaternion.Euler(0, angle, 0);
+        if (!animator.GetBool("Jump"))
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 500 * Time.deltaTime);
+        }
+    }
+
 }

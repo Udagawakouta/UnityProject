@@ -11,9 +11,11 @@ public class GameManagerScript : MonoBehaviour
     public GameObject block2;
     public GameObject goal;
     public GameObject coin;
+    public GameObject itemBlock;
     public TextMeshProUGUI scoreText;
     public static int score = 0;
     public GameObject goalParticle;
+
 
     public string nextSceneName;
     // Start is called before the first frame update
@@ -66,6 +68,11 @@ public class GameManagerScript : MonoBehaviour
                 if (map[y, x] == 3)
                 {
                     Instantiate(coin, position, Quaternion.identity);
+                }
+                // アイテムブロック
+                if (map[y, x] == 4)
+                {
+                    Instantiate(itemBlock, position, Quaternion.identity);
                 }
 
             }
